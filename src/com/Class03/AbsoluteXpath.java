@@ -2,6 +2,7 @@ package com.Class03;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class AbsoluteXpath {
@@ -28,5 +29,6 @@ public void getXpath() {
 		 driver.findElement(By.xpath("//input[@data-test='password']")).sendKeys("secret_sauce");
 		 driver.findElement(By.xpath("//input[@value='LOGIN']")).click();
 }
+
 
 }
