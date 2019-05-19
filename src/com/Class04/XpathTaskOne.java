@@ -6,17 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class XpathTaskOne {
 
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		/*
-		 * Open chrome browser
-Go to “https://www.facebook.com/”
-Enter valid username and valid password and click login
-User successfully logged in
-		 */
-		//test.rasmi@gmail.com
-	       //Syntax123
-		
-		
+	
 		System.setProperty("webdriver.chrome.driver", "/Users/Syntax/Selenium/chromedriver");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.facebook.com/");
