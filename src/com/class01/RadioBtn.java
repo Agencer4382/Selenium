@@ -12,7 +12,7 @@ public class RadioBtn {
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Samsung\\Selenium\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().fullscreen();
+		driver.manage().window().maximize();
 		driver.get("https://www.facebook.com/");
 		
 		List<WebElement> listElement=driver.findElements(By.name("sex"));
