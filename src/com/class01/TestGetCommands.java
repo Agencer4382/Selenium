@@ -24,8 +24,8 @@ public class TestGetCommands {
 		try {
 			driver.get("http://www.amazon.com");
 			driver.findElement(By.linkText("Your Amazon.com")).click();
-			driver.findElement(By.id("ap_email")).sendKeys("Asimgencer4382@gmail.com");
-			driver.findElement(By.id("ap_password")).sendKeys("musa4382he.");
+			driver.findElement(By.id("ap_email")).sendKeys("Agencer@gmail.com");
+			driver.findElement(By.id("ap_password")).sendKeys("asim1234");
 			driver.navigate().back();
 //			String title=driver.getTitle();
 //			System.out.println("Title of the page is "+title);
