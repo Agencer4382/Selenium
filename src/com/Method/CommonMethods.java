@@ -1,6 +1,8 @@
 package com.Method;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,14 +13,16 @@ public class CommonMethods {
 	public static WebDriver driver;
 	public static void setUpDriver(String browser, String url) {
 		if(browser.equalsIgnoreCase("chrome")) {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Samsung\\Selenium\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src\\drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		}else if(browser.equalsIgnoreCase("firefox")) {
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\Samsung\\Selenium\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "src\\drivers\\geckodriver.exe");
 		driver= new FirefoxDriver();
 		}else {
 			System.out.println("Wrong browser");
 		}
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get(url);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -28,14 +32,18 @@ public class CommonMethods {
 	public static void selectValueFromDD(WebElement element, String text) {
 		Select select = new Select(element);
 		List<WebElement> options = select.getOptions();
+		boolean flag=false;
 		for (WebElement option : options) {
 			String optionText = option.getText();
 			if (optionText.equals(text)) {
 				select.selectByVisibleText(text);
+				System.out.println("Option with text "+text+" is avalible.");
+				flag=true;
 				break;
-			}else {
-				System.out.println("Option with text "+text+" is not available");
 			}
+		}
+		if(!flag) {
+			System.out.println("Option with text "+text+" is not avalible.");
 		}
 	}
 
@@ -53,8 +61,60 @@ public class CommonMethods {
 //		element.clear();
 //		element.sendKeys(value);
 //	}
+	public static void acceptAlert() {
+		try {
+			Alert alt=driver.switchTo().alert();
+			alt.accept();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Alert was not present");
+		}
+	}
+	public static void dsimissAlert() {
+		try {
+			Alert alt=driver.switchTo().alert();
+			alt.dismiss();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Alert was not present");
+		}
+	}
+	public static String getAlertText() {
+		try {
+			Alert alt=driver.switchTo().alert();
+			return alt.getText();
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+			System.out.println("Alert was not present");
+			return null;
+		}
+	}
 
-	
+	public static void switchToFrame(String idOrName) {
+		try {
+			driver.switchTo().frame(idOrName);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Frame is not present");
+		}
+	}
+	public static void switchToFrame(WebElement element) {
+		try {
+			driver.switchTo().frame(element);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Frame is not present");
+		}
+	}
+	public static void switchToFrame(int index) {
+		try {
+			driver.switchTo().frame(index);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Frame is not present");
+		}
+	}
 
 	
 }
