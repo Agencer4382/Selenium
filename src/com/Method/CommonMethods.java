@@ -23,9 +23,11 @@ public class CommonMethods {
 		}
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get(url);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
+		driver.get(url);
+		
+		
 		
 	}
 
@@ -115,6 +117,18 @@ public class CommonMethods {
 			System.out.println("Frame is not present");
 		}
 	}
-
+	public static void sendText(WebElement element, String value) {
+		element.clear();
+		element.sendKeys(value);
+	}
+	public static void clickRadiAndChechk(WebElement element) {
+		try {
+			element.click();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
 	
+	}
 }
