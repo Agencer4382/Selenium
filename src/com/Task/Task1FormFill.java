@@ -23,41 +23,27 @@ public class Task1FormFill extends CommonMethods {
 		Thread.sleep(1000);
 		selectValueFromDD(driver.findElement(By.cssSelector("select[id=\"sel1\"]")), "Canada");
 		Thread.sleep(1000);
-		
-		
-	    driver.findElement(By.id("datepicker")).click();
-	   selectValueFromDD(driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/select[1]")), "Nov");
-	   selectValueFromDD(driver.findElement(By.cssSelector("select[data-handler=\"selectYear\"]")), "1984");
-	   driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[2]/a")).click();
-	   
-	   sendText(driver.findElement(By.id("phonenumber")), "123456789");
-	   Thread.sleep(1000);
-	   sendText(driver.findElement(By.id("username")), "kevin1234");
-	   Thread.sleep(1000);
-	   sendText(driver.findElement(By.cssSelector("input[placeholder*=\"Email\"]")), "kevin123@gmail.com");
-	   Thread.sleep(1000);
-	   sendText(driver.findElement(By.id("comment")), "Syntax Student");
-	   Thread.sleep(1000);
-	   sendText(driver.findElement(By.id("pwd")), "truecrypt");
-	   Thread.sleep(1000);
-	   clickRadiAndChechk(driver.findElement(By.cssSelector("button[class$=\"default \"]")));
-	   
-	   driver.quit();
-	   Thread.sleep(5000);
-	   
-	    
-//	String exDay="7/13/1985";
-//	List<WebElement>day=driver.findElements(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[2]/a"));
-//	for(WebElement element:day) {
-//		String text=element.getText();
-//		if(text.equalsIgnoreCase(exDay)) {
-//			element.click();
-//		}
-//		
-//	}
 
-		
-		
+		driver.findElement(By.id("datepicker")).click();
+		selectValueFromDD(driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/select[1]")), "Nov");
+		selectValueFromDD(driver.findElement(By.cssSelector("select[data-handler=\"selectYear\"]")), "1984");
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[2]/a")).click();
+
+		sendText(driver.findElement(By.id("phonenumber")), "123456789");
+		Thread.sleep(1000);
+		sendText(driver.findElement(By.id("username")), "kevin1234");
+		Thread.sleep(1000);
+		sendText(driver.findElement(By.cssSelector("input[placeholder*=\"Email\"]")), "kevin123@gmail.com");
+		Thread.sleep(1000);
+		sendText(driver.findElement(By.id("comment")), "Syntax Student");
+		Thread.sleep(1000);
+		sendText(driver.findElement(By.id("pwd")), "truecrypt");
+		Thread.sleep(1000);
+		clickRadiAndChechk(driver.findElement(By.cssSelector("button[class$=\"default \"]")));
+
+		driver.quit();
+		Thread.sleep(5000);
+
 	}
 
 }
