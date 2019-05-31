@@ -45,16 +45,18 @@ public class Task2HeadersAndRows extends CommonMethods {
 		String textDis = isDisplay.getText();
 		System.out.println("New order is display the screen : " + textDis);
 		Thread.sleep(3000);
-		WebElement orderDetails1 = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[2]/td[13]/input"));
-				
+		WebElement orderDetails1 = driver
+				.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[2]/td[13]/input"));
 		orderDetails1.click();
 		System.out.println("Order details edit.");
-		sendText(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_TextBox2\"]")), "21 Loop Avenue");
+
+		sendText(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_TextBox2\"]")), "25 Loop Avenue");
 		Thread.sleep(2000);
 		clickRadiAndChechk(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_UpdateButton\"]")));
 		System.out.println("Street adress is updated.");
 		Thread.sleep(2000);
 		clickRadiAndChechk(driver.findElement(By.xpath("//a[text()='View all orders']")));
+		Thread.sleep(2000);
 
 		List<WebElement> row = driver.findElements(By.xpath("//table[@id='ctl00_MainContent_orderGrid']/tbody/tr"));
 		System.out.println("Row size is : " + row.size());
@@ -62,13 +64,23 @@ public class Task2HeadersAndRows extends CommonMethods {
 		List<WebElement> col = driver.findElements(By.xpath("//table[contains(@id,'orderGrid')]/tbody/tr/th"));
 		System.out.println("Column size is : " + col.size());
 
-		String expectedValue = "21 Loop Avenue";
+		String expectedValue = "25 Loop Avenue";
+		String name = "Kevin KURT";
+
 		for (int i = 1; i <= row.size(); i++) {
-			String rowText = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[" + i + "]")).getText();
-					
-			if (rowText.contains(expectedValue)) {
-				driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[" + i + "]/td[6]"))
+			String rowText = driver
+					.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[" + i + "]")).getText();
+
+			if (rowText.startsWith(name)) {
+				String uptadetAdress = driver
+						.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[" + i + "]/td[6]"))
 						.getText();
+                System.out.println("Updated adress : " + uptadetAdress);
+				if (uptadetAdress.equals(expectedValue)) {
+					System.out.println("Verified : " + uptadetAdress);
+				} else {
+					System.out.println("Not verified");
+				}
 				System.out.println("New Order details : " + rowText);
 			}
 		}
